@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React ,{useState} from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './Components/Header/Header';
+import Main from './Components/MainSec/Main';
+import './css/main.css';
+
+export const stickyContext=React.createContext()
 
 function App() {
+  const [Sticky,SetSticky]=useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <stickyContext.Provider value={({'Sticky':Sticky,'SetSticky':SetSticky})}>
+        <BrowserRouter>
+          <Header/>
+        </BrowserRouter>
+        <Main/>
+      </stickyContext.Provider>
     </div>
   );
 }

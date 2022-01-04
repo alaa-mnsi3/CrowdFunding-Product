@@ -1,0 +1,137 @@
+.Header
+{
+    .Nav
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        z-index: 10;
+        padding: 1.5rem 0;
+        background-color: transparent;
+        transition: background-color 300ms ease-in-out;
+        a
+        {
+            color: $primary-text-color;
+        }
+        .Brand
+        {
+            font: 600 1.4rem $primary-font-family;
+            letter-spacing: -.08rem;
+            text-transform: lowercase;
+        }
+        &-ToggleBtn-parent
+        {
+            position: relative;
+            width: 30px;
+            .ToggleBtn
+            {
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                border:2px solid $primary-text-color;
+                border-radius: 5px;
+                z-index: 1;
+                &::after,&::before
+                {
+                    @extend .ToggleBtn;
+                    content: '';
+                    position: absolute;
+                    left: -2px;
+                    width: 30px;
+                    height: 100%;
+                    transform: rotate(0deg) translate(0px, 0px);
+                    z-index: 1;
+                    transition: transform 300ms ease-in-out;
+                }
+                &::after
+                {
+                    top: -10px;
+                }
+                &::before
+                {
+                    top: 6px;
+                }
+                &.active
+                {
+                    border: transparent;
+                    &::after
+                    {
+                        border:2px solid $primary-text-color;
+                        transform:rotate(-50deg) translate(-5px, 6px)
+                    }
+                    &::before
+                    {
+                        border:2px solid $primary-text-color;
+                        transform:rotate(50deg) translate(-6px, -6px)
+                    }
+                }
+            }
+        }
+        .navItems
+        {
+            @include media('tab-port')
+            {
+                position: absolute;
+                top: 100%;
+                width: 90%;
+                padding-left: 0px;
+                left: 50%;
+                background-color: $primary-text-color;
+                padding-right: 0px;
+                opacity: 0;
+                transform: translate(-50%,-10px);
+                border-radius: 10px;
+                overflow: hidden;
+                border:.25px solid rgba($secondary-text-color, 0.08);
+                transition: opacity 300ms ease-in-out,transform 600ms ease-in-out;
+            }
+            &.active
+            {
+                opacity: 1;
+                transform: translate(-50%,0px);
+                height: auto;
+            }
+            &-item
+            {
+                margin-right: 1rem;
+                @include media('tab-port')
+                {
+                    margin-right: 0;
+                    border-bottom:.25px solid rgba($secondary-text-color, 0.08);
+                    padding: 1rem;
+                }
+                &:last-of-type
+                {
+                    margin-right: 0;
+                }
+                a
+                {
+                    font: 500 1rem $primary-font-family;
+                    text-transform: capitalize;
+                    @include media('tab-port')
+                    {
+                        font-weight: 600;
+                        color: $secondary-text-color;
+                    }
+                }
+            }
+        }
+    }
+    .Sticky
+    {
+        background-color: black;
+    }
+    .Bg-Header
+    {
+        background: url(../images/image-hero-desktop.jpg) no-repeat 10% 50%;
+        background-size: cover;
+        width: 100vw;
+        height: 400px;
+        @include media('phone')
+        {
+            background-image: url(../images/image-hero-mobile.jpg);
+            height: 600px;
+        }
+    }
+}

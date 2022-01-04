@@ -1,0 +1,82 @@
+.Sec2
+{
+    @extend %MainSecStyle;
+    &-wrapper
+    {
+        &-ul
+        {
+            margin-bottom: 1.5rem;
+            @include media('small-phone')
+            {
+                flex-direction: column;
+                align-items:center;
+                justify-content: center;
+            }
+            &-li
+            {
+                h2
+                {
+                    @extend %h2;
+                    margin-bottom: 0.2rem;
+                    text-align: center
+                }
+                p
+                {
+                    text-align: center;
+                    @extend %p;
+                    margin-bottom:0;
+                }
+            }
+            .space-li
+            {
+                display: inline-block;
+                width: 1px;
+                background-color: rgba($first-additional-color-light,.5);
+                height:inherit;
+                margin:0 2.5rem;
+                &:last-of-type
+                {
+                    background-color: transparent;
+                }
+                @include media('small-phone')
+                {
+                    width: 62px;
+                    height: 1px;
+                    width: inherit;
+                    margin:2.5rem 0;
+                    &:last-of-type
+                    {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+        &-progress
+        {
+            background-color: $secondary-color;
+            width: 100%;
+            border-radius: 20px;
+            height: 10px;
+            z-index: 1;
+            position: relative;
+            &::after
+            {
+                content: '';
+                background-color: turquoise;
+                width: 0%;
+                border-radius: 20px;
+                height: 100%;
+                position: absolute;
+                z-index: 2;
+                transition:width 900ms ease-in-out;
+            }
+            &.active
+            {
+                &::after
+                {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}

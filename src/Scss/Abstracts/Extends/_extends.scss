@@ -1,0 +1,52 @@
+@import '../Mixins/mixins';
+
+// for section in Main
+%MainSecStyle
+{
+    width: 50%;
+    color: $secondary-text-color;
+    background-color: $primary-text-color;
+    margin-top: 2rem;
+    padding: 4rem 2rem 2rem;
+    border: 1px solid $secondary-color;
+    border-radius: 7px;
+    position: relative;
+    box-shadow:1px 1px 3px rgba($secondary-text-color, .1);
+    @include media('phone')
+    {
+        width: 77%;
+    }
+    @include media('small-phone')
+    {
+        width: 94%;
+    }
+}
+// for H2
+%h2
+{
+    color: $secondary-text-color;
+    font:700 1.4rem $secondary-font-family;
+    margin-bottom: 1.5rem;
+}
+// for p
+%p
+{
+    color: $first-additional-color;
+    font:500 .85rem $secondary-font-family;
+    margin-bottom: 2rem;
+}
+// for button
+%button
+{
+    background-color: $primary-color;
+    padding:.8rem 1.7rem;
+    border-radius: 40px;
+    text-transform: capitalize;
+    color: var(--primary-text-color);
+    font:bold .8rem $secondary-font-family;
+    transition: background-color 300ms ease-in-out;
+    &:hover,&:focus
+    {
+        background-color: $primary-color-dark;
+    }
+}

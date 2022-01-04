@@ -1,0 +1,66 @@
+$primary-color:#1c9195;
+$primary-color-light:#50afb3;
+$primary-color-dark:#0f7074;
+
+$secondary-color:#f7f7f7;
+
+$primary-text-color:#fff;
+$secondary-text-color:#000;
+
+$primary-font-family:monospace;
+$secondary-font-family:sans-serif;
+
+$first-additional-color:gray;
+$first-additional-color-light:#cfcece;
+:root
+{
+    --primary-color:#1c9195;
+    --secondary-color:#f7f7f7;
+
+    --primary-text-color:#fff;
+    --secondary-text-color:#000;
+
+    --primary-font-family:monospace;
+    --secondary-font-family:sans-serif;
+
+    --first-additional-color:gray;
+}
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+body
+{
+    position: relative;
+    font-family: $primary-font-family;
+    background-color: $secondary-color;
+}
+button,input[type="checkbox"],input
+{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    &:focus
+    {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+}
+ul,h3
+{
+    margin: 0;
+    padding: 0;
+}
+li
+{
+    list-style-type: none;
+}
+a
+{
+    text-decoration: none;
+}

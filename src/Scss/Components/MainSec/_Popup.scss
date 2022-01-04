@@ -1,0 +1,305 @@
+.overlay
+{
+
+    background-color: rgba($secondary-text-color,.5);
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+}
+.Popup
+{
+    width: 45%;
+    padding: 2rem ;
+    position: fixed;
+    height: 500px;
+    overflow: auto;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    z-index: 10000;        
+    background-color: $primary-text-color;
+    transform: translate(-50%,-50%);
+    @include media('tab-port')
+    {
+        width: 50%;
+    }
+    @include media('phone')
+    {
+        width: 77%;
+    }
+    @include media('small-phone')
+    {
+        width: 94%;
+    }
+    &.active
+    {
+        width: 33%;
+        height: fit-content !important;
+        max-height: fit-content !important;
+        @include media('tab-port')
+        {
+            width: 50%;
+        }
+        @include media('phone')
+        {
+            width: 77%;
+        }
+        @include media('small-phone')
+        {
+            width: 94%;
+        }
+    }
+    &-Check
+    {
+        h2
+        {
+            @extend %h2;
+            margin-top: 2.5rem
+        }
+        p
+        {
+            @extend %p;
+            line-height: 2rem;
+        }
+        button
+        {
+            @extend %button;
+        }
+    }
+    &-pledge
+    {
+        h2
+        {
+            @extend %h2;
+            margin-bottom: 1rem
+        }
+        p
+        {
+            @extend %p;
+            font-size: .55rem;
+            margin-bottom: 0px
+        }
+        &-parent
+        {
+            &-sec
+            {
+                @extend %MainSecStyle;
+                padding: 0rem;
+                width: 100%;
+                &-wrapper
+                {
+                    padding: 1.3rem;
+                    &-check
+                    {
+                        margin-right: 1rem;
+                        input
+                        {
+                            width: 20px;
+                            height: 20px;
+                            position: relative;
+                            appearance: none;
+                            &::after
+                            {
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 20px;
+                                height: 20px;
+                                border: 1px solid rgba($secondary-text-color, .1);
+                                border-radius: 50%;
+                                z-index: 1;
+                                transition: border 300ms ease-in-out;
+                            }
+                            &:checked
+                            {
+                                position: relative;
+                                width: 20px;
+                                height: 20px;
+                                border: 1px solid $primary-color-light;
+                                border-radius: 50%;
+                            }
+                            &:checked::after
+                            {
+                                content: '';
+                                width: 14px;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%,-50%);
+                                height: 14px;
+                                background-color: $primary-color-light;
+                                border-radius: 50%;
+                                z-index: 0;
+                            }
+                        }
+                    }
+                    &-info
+                    {
+                        position: relative;
+                        &-Header
+                        {
+                            align-items: center;
+                            h3
+                            {
+                                font:800 .78rem $secondary-font-family;
+                                margin-right: 1rem;
+                                margin-bottom: 0;
+                                cursor: pointer;
+                                &:last-of-type
+                                {
+                                    font:800 .7rem $secondary-font-family;
+                                    margin-right: 0;
+                                    color: $primary-color-light;
+                                }
+                                &:first-of-type
+                                {
+                                    transition: color 300ms ease-in-out;
+                                }
+                            }
+                            @include media('tab-port')
+                            {
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+                        }
+                        p
+                        {
+                            line-height: 1.3rem;
+                            font-size: .65rem;
+                            margin-top: 1rem;
+                        }
+                        &-nums
+                        {
+                            position: absolute;
+                            right: 8px;
+                            top: 1px;
+                            font: 800 .65rem $secondary-font-family;
+                            span
+                            {
+                                color: $first-additional-color;
+                            }
+                            @media only screen and (max-width:1140px) 
+                            {
+                                position: relative;
+                                right: 0;
+                                top: 0;    
+                            }
+                        }
+                    }
+                }
+                &-form
+                {
+                    border-top: 1px solid rgba($first-additional-color-light,.5);
+                    padding: 1.3rem;
+                    align-items:center;
+                    @include media('tab-port')
+                    {
+                        align-items: flex-start;
+                        flex-direction: column;
+                    }
+                    input
+                    {
+                        font: 500 .8rem $secondary-font-family;
+                        @include media('tab-port')
+                        {
+                           margin-bottom: 1rem;
+                        }
+                    }
+                    &-btns
+                    {
+                        align-items: center;
+                        @media only screen and (max-width:350px)
+                        {
+                            align-items: flex-start;
+                            flex-direction: column;
+                        }
+                        button
+                        {
+                            @extend %button;
+                            &:first-of-type
+                            {
+                                margin-right: 1rem;
+                                background-color: transparent;
+                                border: 1px solid $primary-color;
+                                color: $secondary-text-color;
+                                @media only screen and (max-width:350px)
+                                {
+                                    margin-right: 0rem;
+                                    margin-bottom: 1rem;
+                                }
+                                span
+                                {
+                                    color: $primary-color;
+                                    margin-left: 3px;
+                                    margin-bottom: 1.5px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &:hover .Popup-pledge-parent-sec-wrapper-info h3, &:focus .Popup-pledge-parent-sec-wrapper-info h3
+                {
+                    color: $primary-color-light;
+                }
+                &:hover .Popup-pledge-parent-sec-wrapper-check input::after, &:focus .Popup-pledge-parent-sec-wrapper-check input::after
+                {
+                    border-color:$primary-color-light;
+                }
+                &:nth-of-type(3)
+                {
+                    .Popup-pledge-parent-sec-wrapper-info
+                    {
+                        div
+                        {
+                            &:first-of-type , .Popup-pledge-parent-sec-wrapper-info-nums
+                            {
+                                color: rgba($secondary-text-color,.8);
+                            }
+                            h3
+                            {
+
+                                &:last-of-type
+                                {
+                                    color: rgba($primary-color-light,.8);
+                                }
+                            }
+                        }
+                        p
+                        {
+                            color: rgba($first-additional-color,.8);
+                        }
+                    }
+                }
+                &:last-of-type
+                {
+                    .Popup-pledge-parent-sec-wrapper-info
+                    {
+                        div
+                        {
+                            h3
+                            {
+                                &:first-of-type , .Popup-pledge-parent-sec-wrapper-info-nums
+                                {
+                                    color: rgba($secondary-text-color,.3);
+                                }
+                                &:last-of-type
+                                {
+                                    color: rgba($primary-color-light,.5);
+                                }
+                            }
+                        }
+                        p , .Popup-pledge-parent-sec-wrapper-info-nums span
+                        {
+                            color: rgba($first-additional-color,.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

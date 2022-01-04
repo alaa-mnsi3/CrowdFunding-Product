@@ -1,0 +1,79 @@
+.Sec-Main
+{
+    margin-top: -3%;
+}
+.Sec1
+{
+    @extend %MainSecStyle;
+    margin-top: 0;
+    &::after
+    {
+        content: '';
+        top: -34px;
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        z-index: 1;
+        background: url(../images/logo-mastercraft.svg) no-repeat center;
+        background-size: cover;
+    }
+    h2
+    {
+        @extend %h2;
+    }
+    p
+    {
+        @extend %p;
+    }
+    &-btns
+    {
+        &-btn1
+        {
+            @extend %button;
+        }
+        &-btn2
+        {
+            background-color: rgba($primary-color, .1);
+            border-radius: 40px;
+            transition: background-color 300ms ease-in-out;
+            cursor: pointer;
+            button:first-of-type
+            {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: $primary-color;
+                color: $primary-text-color;
+                transition: background-color 300ms ease-in-out,color 300ms ease-in-out;
+                @include media('small-phone')
+                {
+                    background-color:rgba($secondary-text-color, .9);
+                    color: $first-additional-color-light;
+                }
+            }
+            button:last-of-type
+            {
+                font:bolder .8rem $secondary-font-family;
+                color: $primary-color;
+                padding:0 1rem;
+                transition:color 300ms ease-in-out;
+            }
+            &:hover ,&:focus
+            {
+                background-color: rgba($secondary-text-color, .1);
+            }
+            &:hover button:first-of-type,&:focus button:first-of-type
+            {
+                background-color: rgba($secondary-text-color, .6);
+                color: $first-additional-color-light;
+            }
+            &:hover button:last-of-type,&:focus button:last-of-type
+            {
+                color: rgba($secondary-text-color, .6);
+            }
+        }
+    }
+}
+
